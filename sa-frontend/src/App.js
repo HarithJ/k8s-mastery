@@ -7,7 +7,7 @@ import Paper from 'material-ui/Paper';
 import Polarity from "./components/Polarity";
 
 const style = {
-    marginLeft: 12,
+    marginLeft: -120,
 };
 
 class App extends Component {
