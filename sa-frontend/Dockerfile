@@ -1,12 +1,20 @@
 # You should always specify a full version here to ensure all of your developers
 # are running the same version of Node.
 FROM node:8.10.0 as builder
-RUN mkdir /usr/src/app
-WORKDIR /usr/src/app
-ENV PATH /usr/src/app/node_modules/.bin:$PATH
-COPY . /usr/src/app
-RUN npm install --silent
-RUN npm run build
+# Override the base log level (info).
+ENV NPM_CONFIG_LOGLEVEL warn
+
+# Copy all local files into the image.
+
+RUN mkdir /home/project
+
+WORKDIR /home/project
+
+COPY . /home/project
+
+RUN cd /home/project && \
+    npm install && \
+    npm run build
 
 FROM nginx
-COPY --from=builder /usr/src/app/build /usr/share/nginx/html
+COPY --from=builder /home/project/build /usr/share/nginx/html
