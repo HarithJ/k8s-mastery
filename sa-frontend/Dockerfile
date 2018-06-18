@@ -9,12 +9,13 @@ ENV NPM_CONFIG_LOGLEVEL warn
 RUN mkdir /home/project
 
 WORKDIR /home/project
+COPY . .
 
-COPY . /home/project
+WORKDIR /home/project
+RUN npm install
 
-RUN cd /home/project && \
-    npm install && \
-    npm run build
+WORKDIR /home/project
+RUN npm run build
 
 FROM nginx
 COPY --from=builder /home/project/build /usr/share/nginx/html
