@@ -7,7 +7,7 @@ import Paper from 'material-ui/Paper';
 import Polarity from "./components/Polarity";
 
 const style = {
-    marginLeft: -120,
+    marginLeft: 12,
 };
 
 class App extends Component {
@@ -46,7 +46,7 @@ class App extends Component {
             <MuiThemeProvider>
                 <div className="centerize">
                     <Paper zDepth={1} className="content">
-                        <h2>Sentiment Analyser</h2>
+                        <h2>Sentiment Analyser JENKINS</h2>
                         <TextField ref={ref => this.textField = ref} onKeyUp={this.onEnterPress.bind(this)}
                                    hintText="Type your sentence."/>
                         <RaisedButton  label="Send" style={style} onClick={this.analyzeSentence.bind(this)}/>
