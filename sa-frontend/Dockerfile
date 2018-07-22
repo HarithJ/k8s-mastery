@@ -9,7 +9,7 @@ ENV NPM_CONFIG_LOGLEVEL warn
 RUN mkdir /home/project
 
 WORKDIR /home/project
-COPY ./sa-frontend .
+COPY . .
 
 WORKDIR /home/project
 RUN npm install
